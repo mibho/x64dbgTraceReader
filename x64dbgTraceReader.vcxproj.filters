@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\data">
+      <UniqueIdentifier>{1415a78b-c486-487d-9321-d76ad633c319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data\data_objects">
+      <UniqueIdentifier>{11e487ab-f8da-445e-96e3-7fab1a4e6650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data\data_objects\x64dbg_tracedata">
+      <UniqueIdentifier>{bb039b57-6658-4719-bf8a-e7e84c96ed5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data">
+      <UniqueIdentifier>{8a36ab70-02a2-4e00-a330-035cef89c57f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\processor">
+      <UniqueIdentifier>{81e56102-4178-4198-9385-4b9953a79b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\processor">
+      <UniqueIdentifier>{498038d6-021c-49a9-98a5-b89470a5473c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\processor\capstone">
+      <UniqueIdentifier>{4a1ecf60-c989-4d95-91aa-3ee462041272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\processor\regex">
+      <UniqueIdentifier>{b6555902-6246-4f80-8203-d3a6587fac8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\processor\capstone">
+      <UniqueIdentifier>{8b6db021-00c4-4c18-b865-d7de6d6b9878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\processor\regex">
+      <UniqueIdentifier>{c0677fa2-55d9-46e6-a626-ef02e516aa67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data\data_objects\xtr_tracedata">
+      <UniqueIdentifier>{6f8d1be0-3c9a-4342-861a-c7c7716ea084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data\data_objects">
+      <UniqueIdentifier>{2fb18b73-fecc-425f-9321-128e0b98b1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data\data_objects\x64dbg_tracedata">
+      <UniqueIdentifier>{d0fcd5dd-eccd-4efc-a2d9-3631d4fe405d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data\data_objects\xtr_tracedata">
+      <UniqueIdentifier>{43d88f70-fb99-4005-929e-c089fb688844}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\data\data_objects\x64dbg_tracedata\trace64data_buf.h">
+      <Filter>Header Files\data\data_objects\x64dbg_tracedata</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\data_formats.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\x64dbgTraceReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\data_manager.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\processor\xtr_processor.h">
+      <Filter>Header Files\processor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\processor\capstone\capstone_engine.h">
+      <Filter>Header Files\processor\capstone</Filter>
+    </ClInclude>
+    <ClInclude Include="include\processor\capstone\disasm_tool.h">
+      <Filter>Header Files\processor\capstone</Filter>
+    </ClInclude>
+    <ClInclude Include="include\processor\regex\regex_tool.h">
+      <Filter>Header Files\processor\regex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\data_objects\x64dbg_tracedata\x64dbg_tracedata.h">
+      <Filter>Header Files\data\data_objects\x64dbg_tracedata</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\data_objects\xtr_tracedata\trace_instruction.h">
+      <Filter>Header Files\data\data_objects\xtr_tracedata</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\data_objects\xtr_tracedata\xtr_tracedata.h">
+      <Filter>Header Files\data\data_objects\xtr_tracedata</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\data\data_manager.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\xtr_processor.cpp">
+      <Filter>Source Files\processor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\regex\regex_tool.cpp">
+      <Filter>Source Files\processor\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\capstone\capstone_engine.cpp">
+      <Filter>Source Files\processor\capstone</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processor\capstone\disasm_tool.cpp">
+      <Filter>Source Files\processor\capstone</Filter>
+    </ClCompile>
+    <ClCompile Include="src\x64dbgTraceReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\data_objects\x64dbg_tracedata\trace64data_buf.cpp">
+      <Filter>Source Files\data\data_objects\x64dbg_tracedata</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\data_objects\x64dbg_tracedata\x64dbg_tracedata.cpp">
+      <Filter>Source Files\data\data_objects\x64dbg_tracedata</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\data_objects\xtr_tracedata\trace_instruction.cpp">
+      <Filter>Source Files\data\data_objects\xtr_tracedata</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\data_objects\xtr_tracedata\xtr_tracedata.cpp">
+      <Filter>Source Files\data\data_objects\xtr_tracedata</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
