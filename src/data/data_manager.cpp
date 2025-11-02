@@ -745,42 +745,64 @@ std::vector<ns_xtr::memadata> ns_xtr::data_manager::getEntryMemaData(_DWORD Nth_
 {
 	std::vector<memadata> result;
 
-	if (doesEntryHaveMemaData(Nth_entry))
+	// Quick exit: entry does not contain any memory access information
+	if (!doesEntryHaveMemaData(Nth_entry))
+		return result;
+
+	auto& nth_ins = xtrTrace->getInstructionFromNthEntry(Nth_entry);
+
+	// Memory access metadata vectors
+	const auto& mem_acc_flags = nth_ins.getMemoryAccessesFlags();      // read/write flags
+	const auto& mem_acc_addrs = nth_ins.getMemoryAccessesAddresses();  // accessed addresses
+	const auto& mem_acc_new = nth_ins.getMemoryAccessesNew();        // new values (only valid for write)
+	const auto& mem_acc_old = nth_ins.getMemoryAccessesOld();        // old values
+
+	// Cached sizes for bounds checking
+	size_t flags_count = mem_acc_flags.size();
+	size_t addrs_count = mem_acc_addrs.size();
+	size_t new_count = mem_acc_new.size();
+	size_t old_count = mem_acc_old.size();
+
+	// Optional: reserve to avoid reallocation
+	result.reserve(min(flags_count, addrs_count));
+
+	// Iterate through all flagged memory access events
+	for (size_t i = 0; i < flags_count; ++i)
 	{
-		auto& nth_ins = xtrTrace->getInstructionFromNthEntry(Nth_entry);
-		const std::vector<bool>& mem_acc_flags = nth_ins.getMemoryAccessesFlags();
+		// Safety check: every valid mem access must have an address
+		if (i >= addrs_count)
+			continue; // skip this entry to avoid out-of-bounds access
 
-		const auto& mem_acc_addrs = nth_ins.getMemoryAccessesAddresses();
-		const auto& mem_acc_new = nth_ins.getMemoryAccessesNew();
-		const auto& mem_acc_old = nth_ins.getMemoryAccessesOld();
+		memadata entryMemoryData{}; // Zero-initialize structure
 
-		for (_DWORD i = 0; i < mem_acc_flags.size(); i++) 
+		// Check access type at index 'i'
+		if (mem_acc_flags[i]) // true => write access
 		{
-			memadata entryMemoryData; // all fields zero by default
+			entryMemoryData.memtype = MEMATYPE_WRITE;
 
-			if (mem_acc_flags[i])
-			{
-				entryMemoryData.memtype = MEMATYPE_WRITE;
+			// Only set new value if exists; otherwise leave as default
+			if (i < new_count)
 				entryMemoryData.new_val = mem_acc_new[i];
-			}
-			else
-			{
-				entryMemoryData.memtype = MEMATYPE_READ;
-			}
+		}
+		else // false => read access
+		{
+			entryMemoryData.memtype = MEMATYPE_READ;
+			// new_val is NOT valid for reads; leave it default
+		}
 
-			
-			entryMemoryData.address = mem_acc_addrs[i];
+		// Valid in both reads and writes
+		entryMemoryData.address = mem_acc_addrs[i];
+
+		// Old value if exists
+		if (i < old_count)
 			entryMemoryData.old_val = mem_acc_old[i];
 
-			result.push_back(entryMemoryData);
-	
-		}
-		
+		result.push_back(entryMemoryData);
 	}
-
 
 	return result;
 }
+
 
 
 void ns_xtr::data_manager::_TRACE64FORMAT_getNewTraceOrder()
